@@ -12,7 +12,7 @@ export default defineConfig({
         './AuthContext': './src/AuthContext.jsx',
       },
       remotes: {
-        music_library: 'https://musify-music-library-w08019tz8-suhassureshas-projects.vercel.app/assets/remoteEntry.js',
+        music_library: 'https://musify-music-library.vercel.app/assets/remoteEntry.js',
       },
       shared: ['react', 'react-dom'],
       dev: true,
