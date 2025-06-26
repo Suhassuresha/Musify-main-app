@@ -14,7 +14,7 @@ export default defineConfig({
       remotes: {
         music_library: 'https://musify-music-library.vercel.app/assets/remoteEntry.js',
       },
-      shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom', 'framer-motion'],
       dev: true,
     }),
   ],

@@ -1,35 +1,42 @@
 import { AuthProvider, useAuth } from "./AuthContext";
 import Login from "./components/Login";
 import MusicLibraryWrapper from "./components/MusicLibraryWrapper";
+import { motion } from "framer-motion";
 
 function MainAppContent() {
   const { role } = useAuth();
 
   return (
-    <div className="min-h-screen w-full flex justify-center bg-gradient-to-b from-sky-100 to-white px-4 py-10 overflow-y-auto">
-      <div className="my-auto bg-white shadow-2xl rounded-3xl p-8 sm:p-10 w-full max-w-xl transition-transform transform hover:scale-[1.02] duration-300 ease-in-out border border-blue-100">
-        <h1 className="text-4xl font-black text-blue-800 text-center mb-6 sm:mb-8 tracking-tight">
+    <div className="min-h-screen w-full bg-gradient-to-br from-sky-100 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-700 flex items-center justify-center px-4 py-12">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-2xl backdrop-blur-md bg-white/30 dark:bg-gray-900/30 border border-white/40 dark:border-gray-700 shadow-2xl rounded-3xl p-6 sm:p-10"
+      >
+        <h1 className="text-3xl font-extrabold text-center text-blue-800 dark:text-blue-200 mb-8">
           Musify 🎶
         </h1>
 
         {!role ? (
-          <div className="space-y-6">
+          <>
             <Login showLoginButtons={true} />
-            <p className="text-gray-500 text-center text-sm">
+            <p className="text-center text-gray-600 dark:text-gray-300 text-sm mt-4">
               Please log in to access the music library.
             </p>
-          </div>
+          </>
         ) : (
-          <div className="space-y-6">
-            <Login showLoginButtons={false} />
-            <p className="text-center text-lg font-medium text-green-700">
-              Welcome, <span className="capitalize">{role}</span>!
-            </p>
+          <>
+            <div className="text-center mb-6">
+              <Login showLoginButtons={false} />
+              <p className="text-green-600 dark:text-green-400 font-semibold mt-2">
+                Welcome, <span className="capitalize">{role}</span>!
+              </p>
+            </div>
             <MusicLibraryWrapper />
-          </div>
-          
+          </>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }
